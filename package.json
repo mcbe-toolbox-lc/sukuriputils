@@ -19,5 +19,8 @@
 	],
 	"exports": {
 		".": "./dist/index.js"
+	},
+	"devDependencies": {
+		"prettier": "^3.6.2"
 	}
 }
