@@ -1,0 +1,23 @@
+{
+	"name": "@mcbe-toolbox-lc/sukuriputils",
+	"version": "0.0.0",
+	"license": "0BSD",
+	"description": "Reusable utilities for Minecraft Bedrock scripting.",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mcbe-toolbox-lc/sukuriputils.git"
+	},
+	"keywords": [
+		"minecraft",
+		"scripting",
+		"utility",
+		"utils"
+	],
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"exports": {
+		".": "./dist/index.js"
+	}
+}
