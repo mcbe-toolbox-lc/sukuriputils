@@ -20,6 +20,9 @@
 	"exports": {
 		".": "./dist/index.js"
 	},
+	"scripts": {
+		"format": "prettier --write ."
+	},
 	"devDependencies": {
 		"prettier": "^3.6.2"
 	}
