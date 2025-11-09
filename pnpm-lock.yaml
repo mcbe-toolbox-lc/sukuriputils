@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@minecraft/server':
+        specifier: ^2.3.0
+        version: 2.3.0(@minecraft/common@1.2.0)(@minecraft/vanilla-data@1.21.120)
     devDependencies:
       prettier:
         specifier: ^3.6.2
@@ -198,6 +202,18 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
+
+  '@minecraft/common@1.2.0':
+    resolution: {integrity: sha512-JdmEq4P3Z/FtoBzhLijFgMSVFnFRrUoLwY8DHHrgtFo0mfLTOLTB1RErYjLMsA6b7BGVNxkX/pfFRiH7QZ0XwQ==}
+
+  '@minecraft/server@2.3.0':
+    resolution: {integrity: sha512-2SXAjZPb67TRjVGVhSXST8ha9p9zrRw0LiCY6+Ul4RN62+j3BbeCMtvOlVLvZV/KjGJyw3fFxIw7SsTzi2szYw==}
+    peerDependencies:
+      '@minecraft/common': ^1.2.0
+      '@minecraft/vanilla-data': '>=1.20.70'
+
+  '@minecraft/vanilla-data@1.21.120':
+    resolution: {integrity: sha512-Ku2oGRngFsJ/w34Fkx3T5BP5LnMGapKtrxO0ftVQFab8ipc9Yli+65B4MzorqH4zmcmoxyT1RE/1CA9JLfYEpw==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1112,6 +1128,15 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  '@minecraft/common@1.2.0': {}
+
+  '@minecraft/server@2.3.0(@minecraft/common@1.2.0)(@minecraft/vanilla-data@1.21.120)':
+    dependencies:
+      '@minecraft/common': 1.2.0
+      '@minecraft/vanilla-data': 1.21.120
+
+  '@minecraft/vanilla-data@1.21.120': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
