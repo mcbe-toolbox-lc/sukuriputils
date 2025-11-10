@@ -18,7 +18,8 @@
 		"dist"
 	],
 	"exports": {
-		".": "./dist/index.js"
+		".": "./dist/index.js",
+		"./server": "./dist/server/index.js"
 	},
 	"scripts": {
 		"test": "vitest run",
