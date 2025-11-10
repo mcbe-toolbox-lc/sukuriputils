@@ -19,6 +19,7 @@
 	],
 	"exports": {
 		".": "./dist/index.js",
+		"./math": "./dist/math/index.js",
 		"./server": "./dist/server/index.js"
 	},
 	"scripts": {
