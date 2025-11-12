@@ -7,7 +7,8 @@ import * as mc from "@minecraft/server";
  * @returns Result of the command execution.
  */
 export const runCommandAtBlock = (block: mc.Block, command: string): mc.CommandResult => {
-	const location = `${block.x} ${block.y} ${block.z}` as const;
+	const { x, y, z } = block.center();
+	const location = `${x} ${y} ${z}` as const;
 	const finalCommand = `execute positioned ${location} run ${command}`;
 	return block.dimension.runCommand(finalCommand);
 };
@@ -17,7 +18,8 @@ export const runCommandAtBlock = (block: mc.Block, command: string): mc.CommandR
  * @param block - The block to destroy.
  */
 export const destroyBlock = (block: mc.Block): void => {
-	const location = `${block.x} ${block.y} ${block.z}` as const;
+	const { x, y, z } = block.center();
+	const location = `${x} ${y} ${z}` as const;
 	const finalCommand = `setblock ${location} air destroy`;
 	block.dimension.runCommand(finalCommand);
 };
