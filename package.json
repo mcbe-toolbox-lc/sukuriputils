@@ -1,6 +1,6 @@
 {
 	"name": "@mcbe-toolbox-lc/sukuriputils",
-	"version": "0.1.0-alpha.1",
+	"version": "0.1.0-alpha.2",
 	"license": "0BSD",
 	"description": "Small utility library for Minecraft Bedrock scripting.",
 	"repository": {
