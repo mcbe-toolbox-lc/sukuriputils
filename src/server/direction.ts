@@ -2,6 +2,7 @@ import * as mc from "@minecraft/server";
 
 /**
  * Reverses a cardinal direction (e.g., Up becomes Down, North becomes South).
+ *
  * @param direction - The direction to reverse.
  * @returns The opposite direction.
  */
@@ -26,6 +27,7 @@ export const getOppositeDirection = (direction: mc.Direction): mc.Direction => {
 
 /**
  * Converts a `Vector2` rotation (pitch/X, yaw/Y) into a cardinal direction.
+ *
  * @param rotation - The rotation vector.
  * @param ignorePitch - If true, only yaw/Y is considered for cardinal directions. Defaults to `false`.
  * @param pitchThreshold - Angle threshold for pitch/X to determine Up/Down. Defaults to `45`.
@@ -47,6 +49,7 @@ export const getDirectionFromRotation = (
 
 /**
  * Converts a cardinal direction into a `Vector2` rotation (pitch/X, yaw/Y).
+ *
  * @param direction - The cardinal direction.
  * @returns The corresponding rotation.
  */

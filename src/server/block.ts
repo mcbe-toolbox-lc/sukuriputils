@@ -2,9 +2,11 @@ import * as mc from "@minecraft/server";
 
 /**
  * Runs a command at the location of a block.
+ *
  * @param block - The block to run the command at.
  * @param command - The command to run.
  * @returns Result of the command execution.
+ * @throws This function can throw errors.
  */
 export const runCommandAtBlock = (block: mc.Block, command: string): mc.CommandResult => {
 	const { x, y, z } = block.center();
@@ -15,7 +17,9 @@ export const runCommandAtBlock = (block: mc.Block, command: string): mc.CommandR
 
 /**
  * Destroys a block using the `setblock` command.
+ *
  * @param block - The block to destroy.
+ * @throws This function can throw errors.
  */
 export const destroyBlock = (block: mc.Block): void => {
 	const { x, y, z } = block.center();

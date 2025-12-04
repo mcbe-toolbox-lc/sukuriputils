@@ -252,7 +252,7 @@ export class ModifiedDamageCalculator {
 	 * @param baseDamage - The initial raw damage before reductions.
 	 * @param cause - The cause of the damage. Defaults to `EntityDamageCause.none`.
 	 * @returns The final damage value after all reductions.
-	 * @throws {Error} If anything goes wrong...
+	 * @throws This function can throw errors.
 	 */
 	calculate(baseDamage: number, entity: mc.Entity, cause = mc.EntityDamageCause.none): number {
 		let finalDamage = baseDamage;
