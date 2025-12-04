@@ -57,3 +57,47 @@ export const getRelativeBlockFrom = (
 			return origin.east(steps);
 	}
 };
+
+/**
+ * Gets the direction of a block.
+ *
+ * Checks block permutation states in order:
+ * 1. `minecraft:cardinal_direction` (if enabled)
+ * 2. `minecraft:block_face` (if enabled)
+ *
+ * @param block - The block.
+ * @param checkCardinalDirectionState - Whether to check the `minecraft:cardinal_direction` state. Defaults to `true`.
+ * @param checkBlockFaceState - Whether to check the `minecraft:block_face` state. Defaults to `true`.
+ * @returns The block's direction. Defaults to North if no valid state is found.
+ * @throws This function can throw errors.
+ */
+export const getBlockDirection = (
+	block: mc.Block,
+	checkCardinalDirectionState = true,
+	checkBlockFaceState = true,
+): mc.Direction => {
+	let directionState: string | undefined;
+	if (checkCardinalDirectionState) {
+		directionState = block.permutation.getState("minecraft:cardinal_direction");
+	}
+	if (!directionState && checkBlockFaceState) {
+		directionState = block.permutation.getState("minecraft:block_face");
+	}
+
+	switch (directionState) {
+		case "up":
+			return mc.Direction.Up;
+		case "down":
+			return mc.Direction.Down;
+		case "north":
+			return mc.Direction.North;
+		case "south":
+			return mc.Direction.South;
+		case "west":
+			return mc.Direction.West;
+		case "east":
+			return mc.Direction.East;
+		default:
+			return mc.Direction.North;
+	}
+};
