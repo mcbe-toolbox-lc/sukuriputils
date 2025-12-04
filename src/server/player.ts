@@ -26,3 +26,12 @@ export const addCameraShake = (
 ): void => {
 	player.runCommand(`camerashake add @s ${intensity} ${seconds} ${mode}`);
 };
+
+/**
+ * Stops any active camera shake effect on a player.
+ * @param player - The player to stop the camera shake for.
+ * @throws This function can throw errors.
+ */
+export const stopCameraShake = (player: mc.Player): void => {
+	player.runCommand(`camerashake stop @s`);
+};
