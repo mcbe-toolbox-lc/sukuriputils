@@ -160,3 +160,30 @@ export const vectorToDirection = (vector: mc.Vector3): mc.Direction => {
 	// Zero vector case
 	return mc.Direction.North;
 };
+
+/**
+ * Converts a `Vector3` direction into a `Vector2` rotation.
+ *
+ * @param direction - The direction vector to convert.
+ * @returns A `Vector2` object representing the rotation calculated from `direction`.
+ *
+ * @example
+ * ```ts
+ * const rotation = vectorToRotation({ x: 0, y: 1, z: 0 });
+ * // Returns { x: -90, y: 0 }
+ * ```
+ */
+export const vectorToRotation = (direction: mc.Vector3): mc.Vector2 => {
+	// Normalize the direction vector
+	const length = Math.sqrt(direction.x ** 2 + direction.y ** 2 + direction.z ** 2);
+	const normalized = {
+		x: direction.x / length,
+		y: direction.y / length,
+		z: direction.z / length,
+	};
+
+	const pitch = -Math.asin(normalized.y) * (180 / Math.PI);
+	const yaw = -Math.atan2(normalized.x, normalized.z) * (180 / Math.PI);
+
+	return { x: pitch, y: yaw };
+};
