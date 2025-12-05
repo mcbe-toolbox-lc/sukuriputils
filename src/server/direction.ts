@@ -187,3 +187,27 @@ export const vectorToRotation = (direction: mc.Vector3): mc.Vector2 => {
 
 	return { x: pitch, y: yaw };
 };
+
+/**
+ * Converts a `Vector2` rotation into a `Vector3` direction.
+ *
+ * @param rotation - The rotation vector to convert.
+ * @returns  A `Vector3` object representing the direction vector calculated from `rotation`.
+ *
+ * @example
+ * ```ts
+ * const dir = rotationToVector({ x: 0, y: 90 });
+ * // Returns { x: -1, y: 0, z: 0 }
+ * ```
+ */
+export const rotationToVector = (rotation: mc.Vector2): mc.Vector3 => {
+	// Convert degrees to radians
+	const pitchRad = (rotation.x * Math.PI) / 180;
+	const yawRad = (rotation.y * Math.PI) / 180;
+
+	const x = -Math.sin(yawRad) * Math.cos(pitchRad);
+	const y = -Math.sin(pitchRad);
+	const z = Math.cos(yawRad) * Math.cos(pitchRad);
+
+	return { x, y, z };
+};
