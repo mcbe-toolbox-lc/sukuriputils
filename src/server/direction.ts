@@ -71,3 +71,34 @@ export const getRotationFromDirection = (direction: mc.Direction): mc.Vector2 =>
 			return { x: 0, y: 0 };
 	}
 };
+
+/**
+ * Converts a direction enum to its corresponding unit vector.
+ *
+ * @param direction - The direction to convert.
+ * @returns A unit vector pointing in the specified direction.
+ *
+ * @example
+ * ```ts
+ * const upVector = getVectorFromDirection(mc.Direction.Up);
+ * // Returns { x: 0, y: 1, z: 0 }
+ * ```
+ */
+export const getVectorFromDirection = (direction: mc.Direction): mc.Vector3 => {
+	switch (direction) {
+		case mc.Direction.Up:
+			return { x: 0, y: 1, z: 0 };
+		case mc.Direction.Down:
+			return { x: 0, y: -1, z: 0 };
+		case mc.Direction.North:
+			return { x: 0, y: 0, z: -1 };
+		case mc.Direction.East:
+			return { x: 1, y: 0, z: 0 };
+		case mc.Direction.South:
+			return { x: 0, y: 0, z: 1 };
+		case mc.Direction.West:
+			return { x: -1, y: 0, z: 0 };
+		default:
+			return { x: 0, y: 0, z: 0 };
+	}
+};
