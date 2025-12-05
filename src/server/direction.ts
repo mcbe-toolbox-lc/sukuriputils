@@ -8,14 +8,14 @@ import * as mc from "@minecraft/server";
  *
  * @example
  * ```ts
- * const dir = getOppositeDirection(Direction.Up);
+ * const dir = reverseDirection(Direction.Up);
  * // Returns Direction.Down
  *
- * const dir2 = getOppositeDirection(Direction.East);
+ * const dir2 = reverseDirection(Direction.East);
  * // Returns Direction.West
  * ```
  */
-export const getOppositeDirection = (direction: mc.Direction): mc.Direction => {
+export const reverseDirection = (direction: mc.Direction): mc.Direction => {
 	switch (direction) {
 		case mc.Direction.Up:
 			return mc.Direction.Down;
@@ -44,14 +44,14 @@ export const getOppositeDirection = (direction: mc.Direction): mc.Direction => {
  *
  * @example
  * ```ts
- * const dir = getDirectionFromRotation({ x: 0, y: 69 });
+ * const dir = rotationToDirection({ x: 0, y: 69 });
  * // Returns Direction.West;
  *
- * const dir2 = getDirectionFromRotation(entity.getRotation(), true);
+ * const dir2 = rotationToDirection(entity.getRotation(), true);
  * // Returns the cardinal direction of the entity
  * ```
  */
-export const getDirectionFromRotation = (
+export const rotationToDirection = (
 	rotation: mc.Vector2,
 	ignorePitch = false,
 	pitchThreshold = 45,
@@ -73,11 +73,11 @@ export const getDirectionFromRotation = (
  *
  * @example
  * ```ts
- * const rotation = getRotationFromDirection(Direction.North);
+ * const rotation = directionToRotation(Direction.North);
  * // Returns { x: 0, y: 180 }
  * ```
  */
-export const getRotationFromDirection = (direction: mc.Direction): mc.Vector2 => {
+export const directionToRotation = (direction: mc.Direction): mc.Vector2 => {
 	switch (direction) {
 		case mc.Direction.Up:
 			return { x: -90, y: 0 };
@@ -104,11 +104,11 @@ export const getRotationFromDirection = (direction: mc.Direction): mc.Vector2 =>
  *
  * @example
  * ```ts
- * const upVector = getVectorFromDirection(Direction.Up);
+ * const upVector = directionToVector(Direction.Up);
  * // Returns { x: 0, y: 1, z: 0 }
  * ```
  */
-export const getVectorFromDirection = (direction: mc.Direction): mc.Vector3 => {
+export const directionToVector = (direction: mc.Direction): mc.Vector3 => {
 	switch (direction) {
 		case mc.Direction.Up:
 			return { x: 0, y: 1, z: 0 };
@@ -135,14 +135,14 @@ export const getVectorFromDirection = (direction: mc.Direction): mc.Vector3 => {
  *
  * @example
  * ```ts
- * const dir = getDirectionFromVector({ x: 0, y: 5, z: 0 });
+ * const dir = vectorToDirection({ x: 0, y: 5, z: 0 });
  * // Returns Direction.Up
  *
- * const dir2 = getDirectionFromVector({ x: 2, y: 1, z: 0 });
+ * const dir2 = vectorToDirection({ x: 2, y: 1, z: 0 });
  * // Returns Direction.East (x-axis is dominant)
  * ```
  */
-export const getDirectionFromVector = (vector: mc.Vector3): mc.Direction => {
+export const vectorToDirection = (vector: mc.Vector3): mc.Direction => {
 	// Normalize to handle non-unit vectors
 	const absX = Math.abs(vector.x);
 	const absY = Math.abs(vector.y);
