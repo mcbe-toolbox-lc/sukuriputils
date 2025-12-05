@@ -102,3 +102,37 @@ export const getVectorFromDirection = (direction: mc.Direction): mc.Vector3 => {
 			return { x: 0, y: 0, z: 0 };
 	}
 };
+
+/**
+ * Converts a vector to its corresponding direction.
+ *
+ * @param vector - The vector to convert (does not need to be a unit vector)
+ * @returns The direction enum corresponding to the dominant axis.
+ *
+ * @example
+ * ```ts
+ * const dir = getDirectionFromVector({ x: 0, y: 5, z: 0 });
+ * // Returns mc.Direction.Up
+ *
+ * const dir2 = getDirectionFromVector({ x: 2, y: 1, z: 0 });
+ * // Returns mc.Direction.East (x-axis is dominant)
+ * ```
+ */
+export const getDirectionFromVector = (vector: mc.Vector3): mc.Direction => {
+	// Normalize to handle non-unit vectors
+	const absX = Math.abs(vector.x);
+	const absY = Math.abs(vector.y);
+	const absZ = Math.abs(vector.z);
+
+	// Find the dominant axis
+	if (absY > absX && absY > absZ) {
+		return vector.y > 0 ? mc.Direction.Up : mc.Direction.Down;
+	} else if (absX > absZ) {
+		return vector.x > 0 ? mc.Direction.East : mc.Direction.West;
+	} else if (absZ > 0) {
+		return vector.z > 0 ? mc.Direction.South : mc.Direction.North;
+	}
+
+	// Zero vector case
+	return mc.Direction.North;
+};
