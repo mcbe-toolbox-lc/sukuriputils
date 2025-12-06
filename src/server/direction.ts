@@ -130,7 +130,7 @@ export const directionToVector = (direction: mc.Direction): mc.Vector3 => {
 /**
  * Converts a vector to its corresponding cardinal direction.
  *
- * @param vector - The vector to convert (does not need to be a unit vector).
+ * @param vector - The vector to convert.
  * @returns The direction enum value corresponding to the dominant axis.
  *
  * @example
@@ -143,7 +143,6 @@ export const directionToVector = (direction: mc.Direction): mc.Vector3 => {
  * ```
  */
 export const vectorToDirection = (vector: mc.Vector3): mc.Direction => {
-	// Normalize to handle non-unit vectors
 	const absX = Math.abs(vector.x);
 	const absY = Math.abs(vector.y);
 	const absZ = Math.abs(vector.z);
@@ -153,12 +152,9 @@ export const vectorToDirection = (vector: mc.Vector3): mc.Direction => {
 		return vector.y > 0 ? mc.Direction.Up : mc.Direction.Down;
 	} else if (absX > absZ) {
 		return vector.x > 0 ? mc.Direction.East : mc.Direction.West;
-	} else if (absZ > 0) {
+	} else {
 		return vector.z > 0 ? mc.Direction.South : mc.Direction.North;
 	}
-
-	// Zero vector case
-	return mc.Direction.North;
 };
 
 /**
