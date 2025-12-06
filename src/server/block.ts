@@ -36,6 +36,13 @@ export const destroyBlock = (block: mc.Block): void => {
  * @param steps - The number of blocks to move in the specified direction. Defaults to 1.
  * @returns The block at the calculated relative position, could be undefined.
  * @throws This function can throw errors.
+ *
+ * @example
+ * ```ts
+ * // These two are identical:
+ * block.east(2);
+ * getRelativeBlockFrom(block, mc.Direction.East, 2);
+ * ```
  */
 export const getRelativeBlockFrom = (
 	origin: mc.Block,
